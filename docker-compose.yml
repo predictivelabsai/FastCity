@@ -1,0 +1,21 @@
+services:
+  fastcity:
+    build: .
+    ports:
+      - "5011:5011"
+    environment:
+      FASTCITY_DB: /data/fastcity.sqlite
+      FASTCITY_PORT: "5011"
+      MODEL_PROVIDER: ${MODEL_PROVIDER:-xai}
+      MODEL_NAME: ${MODEL_NAME:-grok-4-1-fast-reasoning}
+      XAI_API_KEY: ${XAI_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      FASTCITY_ADMIN_EMAIL: ${FASTCITY_ADMIN_EMAIL:-admin@fastcity.example}
+      FASTCITY_ADMIN_PASSWORD: ${FASTCITY_ADMIN_PASSWORD:-FastCity2026$$}
+      FASTCITY_SECRET: ${FASTCITY_SECRET:-}
+    volumes:
+      - fastcity-data:/data
+volumes:
+  fastcity-data:
