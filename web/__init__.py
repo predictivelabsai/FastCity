@@ -1,1 +1,1 @@
-"""FastCity web package."""
+"""Web package."""

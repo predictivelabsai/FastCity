@@ -1,3 +1,4 @@
+from web.landing import landing_page
 """FastCity — an open-source smart-city IoT data platform built with FastHTML.
 
 A server-side, HTMX-driven analytics & management layer for a city sensor
@@ -99,7 +100,10 @@ def get(session):
 
 @rt("/")
 def get(session):
+    if not _user(session):
+        return landing_page()
     return _guard(session, "dashboard", views.dashboard)
+
 
 
 @rt("/devices")
